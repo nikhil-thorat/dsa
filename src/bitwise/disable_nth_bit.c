@@ -10,17 +10,10 @@ void solve()
     printf("Enter n : ");
     scanf("%d", &n);
 
-    n--;
-    int mask = (1 << n);
+    int mask = ~(1 << (n-1));
+    N = N & n;
 
-    if ((N & mask) != 0)
-    {
-        printf("Set\n");
-    }
-    else
-    {
-        printf("Not set\n");
-    }
+    printf("%d", N);
 }
 
 int main()
