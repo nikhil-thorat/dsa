@@ -99,6 +99,9 @@ void DeleteFrom(Array *array, unsigned int index)
     array->size--;
 }
 
+/*
+ * Removes the last element from the given Array.
+ */
 void Pop(Array *array)
 {
     if (array->size == 0)
