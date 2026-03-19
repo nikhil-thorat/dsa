@@ -49,6 +49,22 @@ void InsertAt(Array *array, unsigned int index, int value)
 }
 
 /*
+ * Adds the given element at the end of the Array.
+ * Time complexity is O(1)
+ */
+void Push(Array *array, int value)
+{
+    if (array->size == array->capacity)
+    {
+        puts("Array is full");
+        return;
+    }
+
+    array->array[array->size] = value;
+    array->size++;
+}
+
+/*
  * Deltes an element at a given index
  * from the Array.
  * Worst case time complexity is O(N)
@@ -78,6 +94,17 @@ void DeleteFrom(Array *array, unsigned int index)
     for (int i = index; i < array->size; i++)
     {
         array->array[i] = array->array[i + 1];
+    }
+
+    array->size--;
+}
+
+void Pop(Array *array)
+{
+    if (array->size == 0)
+    {
+        puts("Array is empty, nothing to Pop");
+        return;
     }
 
     array->size--;
@@ -144,11 +171,11 @@ int main()
 {
     Array *array = NewArray(5);
 
-    InsertAt(array, 0, 1);
-    InsertAt(array, 1, 2);
-    InsertAt(array, 2, 3);
+    Push(array, 1);
+    Push(array, 2);
+    Push(array, 3);
+    Push(array, 5);
     InsertAt(array, 3, 4);
-    InsertAt(array, 4, 5);
 
     int capacity = GetCapacity(array);
     int size = GetSize(array);
@@ -161,7 +188,11 @@ int main()
     printf("Deleting element at index 3\n");
     PrintElements(array);
 
-    int value = 4;
+    Pop(array);
+    printf("Popping last element\n");
+    PrintElements(array);
+
+    int value = 2;
     int index = Search(array, value);
     if (index != -1)
     {
