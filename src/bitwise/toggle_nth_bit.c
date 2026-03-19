@@ -4,25 +4,15 @@ void solve()
 {
     int N, n;
 
-    /* FIX */
-
     printf("Enter num : ");
     scanf("%d", &N);
 
     printf("Enter n : ");
     scanf("%d", &n);
 
-    n--;
-    int mask = (1 << n);
+    N = N ^ 1 << (n - 1);
+    printf("%d", N);
 
-    if ((N & mask) != 0)
-    {
-        printf("Set\n");
-    }
-    else
-    {
-        printf("Not set\n");
-    }
 }
 
 int main()
