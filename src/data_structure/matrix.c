@@ -120,7 +120,7 @@ Matrix *Transpose(Matrix *matrix)
     {
         for (int j = 0; j < matrix->col; j++)
         {
-            new_matrix->matrix[i][j] = matrix->matrix[j][i];
+            new_matrix->matrix[j][i] = matrix->matrix[i][j];
         }
     }
 
@@ -130,7 +130,7 @@ Matrix *Transpose(Matrix *matrix)
 
 int main()
 {
-    Matrix *matrix = NewMatrix(5, 5);
+    Matrix *matrix = NewMatrix(5, 3);
 
     int x = 1;
     for (int i = 0; i < matrix->row; i++)
