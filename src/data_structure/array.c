@@ -20,7 +20,7 @@ Array *NewArray(int cap)
     Array *array = malloc(sizeof(Array));
     array->capacity = cap;
     array->size = 0;
-    array->array = malloc(array->capacity);
+    array->array = malloc(array->capacity * sizeof(int));
     return array;
 };
 
@@ -205,6 +205,9 @@ int main()
     {
         printf("Value %d not found in the Array\n", value);
     }
+
+    free(array->array);
+    free(array);
 
     return 0;
 }

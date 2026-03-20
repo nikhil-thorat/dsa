@@ -20,7 +20,7 @@ Vector *NewVector(int cap)
     Vector *vector = malloc(sizeof(Vector));
     vector->capacity = cap;
     vector->size = 0;
-    vector->vector = malloc(vector->capacity);
+    vector->vector = malloc(vector->capacity * sizeof(int));
     return vector;
 };
 
@@ -171,6 +171,9 @@ int main()
     capacity = GetCapacity(vector);
     printf("Capacity of Vector : %d\n", capacity);
     PrintElements(vector);
+
+    free(vector->vector);
+    free(vector);
 
     return 0;
 }
