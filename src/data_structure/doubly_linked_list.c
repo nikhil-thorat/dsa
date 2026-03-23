@@ -239,6 +239,20 @@ void PrintElements(DoublyLinkedList *doubly_linked_list)
     free(current);
 }
 
+/*
+ * Frees the memory of the given Doubly linked list.
+ */
+void Destroy(DoublyLinkedList *doubly_linked_list)
+{
+    while (doubly_linked_list->head)
+    {
+        Node *temp = doubly_linked_list->head;
+        doubly_linked_list->head = doubly_linked_list->head->next;
+        free(temp);
+    }
+    free(doubly_linked_list);
+}
+
 int main()
 {
     DoublyLinkedList *doubly_linked_list = NewDoublyLinkedList();
@@ -274,6 +288,8 @@ int main()
 
     Reverse(doubly_linked_list);
     PrintElements(doubly_linked_list);
+
+    Destroy(doubly_linked_list);
 
     return 0;
 }

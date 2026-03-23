@@ -228,6 +228,20 @@ void PrintElements(LinkedList *linked_list)
     free(current);
 }
 
+/*
+ * Frees the memory of the given Linked list.
+ */
+void Destroy(LinkedList *linked_list)
+{
+    while (linked_list->head)
+    {
+        Node *temp = linked_list->head;
+        linked_list->head = linked_list->head->next;
+        free(temp);
+    };
+    free(linked_list);
+}
+
 int main()
 {
     LinkedList *linked_list = NewLinkedList();
@@ -263,6 +277,8 @@ int main()
 
     Reverse(linked_list);
     PrintElements(linked_list);
+
+    Destroy(linked_list);
 
     return 0;
 }
