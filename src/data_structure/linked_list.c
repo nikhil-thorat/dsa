@@ -1,3 +1,4 @@
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -62,6 +63,7 @@ void InsertAtHead(LinkedList *linked_list, int data)
     {
         linked_list->head = new_node;
         linked_list->tail = new_node;
+        linked_list->size++;
         return;
     }
 
@@ -82,6 +84,7 @@ void InsertAtTail(LinkedList *linked_list, int data)
     {
         linked_list->head = new_node;
         linked_list->tail = new_node;
+        linked_list->size++;
         return;
     }
 
@@ -98,7 +101,7 @@ void InsertAtTail(LinkedList *linked_list, int data)
 void InsertAtIndex(LinkedList *linked_list, int index, int data)
 {
 
-    if (index > linked_list->size)
+    if (index > linked_list->size || index < 0)
     {
         return;
     }
@@ -115,6 +118,7 @@ void InsertAtIndex(LinkedList *linked_list, int index, int data)
     Node *new_node = NewNode(data);
     prev->next = new_node;
     new_node->next = current;
+    linked_list->size++;
 }
 
 /*
@@ -138,9 +142,28 @@ void DeleteValue(LinkedList *linked_list, int value)
         current = current->next;
     }
 
+    if (current == linked_list->head)
+    {
+        linked_list->head = current->next;
+        current->next = NULL;
+        free(current);
+        linked_list->size--;
+        return;
+    }
+
+    if (current == linked_list->tail)
+    {
+        linked_list->tail = prev;
+        linked_list->tail->next = NULL;
+        free(current);
+        linked_list->size--;
+        return;
+    }
+
     Node *next_node = current->next;
     prev->next = next_node;
     free(current);
+    linked_list->size--;
 }
 
 /*
@@ -151,12 +174,20 @@ void DeleteValue(LinkedList *linked_list, int value)
 void DeleteFromIndex(LinkedList *linked_list, int index)
 {
 
-    if (index > linked_list->size)
+    if (index > linked_list->size || index < 0)
     {
         return;
     }
 
     Node *current = linked_list->head;
+    if (index == 0)
+    {
+        linked_list->head = current->next;
+        linked_list->size--;
+        free(current);
+        return;
+    }
+
     Node *prev = NULL;
 
     for (int i = 0; i < index; i++)
@@ -165,9 +196,18 @@ void DeleteFromIndex(LinkedList *linked_list, int index)
         current = current->next;
     }
 
+    if (index == linked_list->size - 1)
+    {
+        linked_list->tail = prev;
+        prev->next = NULL;
+        linked_list->size--;
+        return;
+    }
+
     Node *next_node = current->next;
     prev->next = next_node;
     free(current);
+    linked_list->size--;
 }
 
 /*
@@ -276,6 +316,18 @@ int main()
     }
 
     Reverse(linked_list);
+    PrintElements(linked_list);
+
+    DeleteFromIndex(linked_list, 0);
+    PrintElements(linked_list);
+
+    DeleteFromIndex(linked_list, 2);
+    PrintElements(linked_list);
+
+    DeleteValue(linked_list, 1);
+    PrintElements(linked_list);
+
+    DeleteValue(linked_list, 3);
     PrintElements(linked_list);
 
     Destroy(linked_list);
