@@ -159,6 +159,11 @@ void DeleteValue(DoublyLinkedList *doubly_linked_list, int value)
         current = current->next;
     }
 
+    if (current == NULL)
+    {
+        return;
+    }
+
     if (current == doubly_linked_list->head)
     {
         doubly_linked_list->head = current->next;
@@ -259,7 +264,6 @@ int Search(DoublyLinkedList *doubly_linked_list, int value)
         }
         current = current->next;
     }
-    free(current);
     return 0;
 }
 
@@ -283,7 +287,6 @@ void Reverse(DoublyLinkedList *doubly_linked_list)
 
     doubly_linked_list->tail = doubly_linked_list->head;
     doubly_linked_list->head = prev;
-    free(current);
 }
 
 /*
@@ -299,7 +302,6 @@ void PrintElements(DoublyLinkedList *doubly_linked_list)
         current = current->next;
     }
     printf("\n");
-    free(current);
 }
 
 /*

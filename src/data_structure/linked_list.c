@@ -226,7 +226,6 @@ int Search(LinkedList *linked_list, int value)
         }
         current = current->next;
     }
-    free(current);
     return 0;
 }
 
@@ -248,7 +247,6 @@ void Reverse(LinkedList *linked_list)
     }
 
     linked_list->head = prev;
-    free(current);
 }
 
 /*
@@ -256,7 +254,6 @@ void Reverse(LinkedList *linked_list)
  */
 void PrintElements(LinkedList *linked_list)
 {
-
     Node *current = linked_list->head;
     while (current)
     {
@@ -264,7 +261,6 @@ void PrintElements(LinkedList *linked_list)
         current = current->next;
     }
     printf("\n");
-    free(current);
 }
 
 /*
