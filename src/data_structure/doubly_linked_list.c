@@ -1,3 +1,4 @@
+#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -64,6 +65,7 @@ void InsertAtHead(DoublyLinkedList *doubly_linked_list, int data)
     {
         doubly_linked_list->head = new_node;
         doubly_linked_list->tail = new_node;
+        doubly_linked_list->size++;
         return;
     }
 
@@ -81,12 +83,12 @@ void InsertAtHead(DoublyLinkedList *doubly_linked_list, int data)
 void InsertAtTail(DoublyLinkedList *doubly_linked_list, int data)
 {
     Node *new_node = NewNode(data);
+
     if (doubly_linked_list->head == NULL)
     {
         doubly_linked_list->head = new_node;
         doubly_linked_list->tail = new_node;
-        doubly_linked_list->head->next = doubly_linked_list->tail;
-        doubly_linked_list->tail->prev = doubly_linked_list->head;
+        doubly_linked_list->size++;
         return;
     }
 
@@ -109,6 +111,16 @@ void InsertAtIndex(DoublyLinkedList *doubly_linked_list, int index, int data)
         return;
     }
 
+    if (index == 0)
+    {
+        InsertAtHead(doubly_linked_list, data);
+    }
+
+    if (index == doubly_linked_list->size - 1)
+    {
+        InsertAtTail(doubly_linked_list, data);
+    }
+
     Node *current = doubly_linked_list->head;
     Node *prev = NULL;
 
@@ -123,6 +135,7 @@ void InsertAtIndex(DoublyLinkedList *doubly_linked_list, int index, int data)
     new_node->prev = prev;
     new_node->next = current;
     current->prev = new_node;
+    doubly_linked_list->size++;
 }
 
 /*
@@ -146,9 +159,30 @@ void DeleteValue(DoublyLinkedList *doubly_linked_list, int value)
         current = current->next;
     }
 
+    if (current == doubly_linked_list->head)
+    {
+        doubly_linked_list->head = current->next;
+        current->next = NULL;
+        doubly_linked_list->head->prev = NULL;
+        free(current);
+        doubly_linked_list->size--;
+        return;
+    }
+
+    if (current == doubly_linked_list->tail)
+    {
+        doubly_linked_list->tail = current->prev;
+        current->next = NULL;
+        doubly_linked_list->tail->next = NULL;
+        free(current);
+        doubly_linked_list->size--;
+        return;
+    }
+
     Node *next_node = current->next;
     prev->next = next_node;
     next_node->prev = prev;
+    doubly_linked_list->size--;
     free(current);
 }
 
@@ -159,13 +193,30 @@ void DeleteValue(DoublyLinkedList *doubly_linked_list, int value)
  */
 void DeleteFromIndex(DoublyLinkedList *doubly_linked_list, int index)
 {
-
-    if (index > doubly_linked_list->size)
+    if (index > doubly_linked_list->size || index < 0)
     {
         return;
     }
 
+    if (doubly_linked_list->size == 1)
+    {
+        doubly_linked_list->head = NULL;
+        doubly_linked_list->tail = NULL;
+        doubly_linked_list->size--;
+        return;
+    };
+
     Node *current = doubly_linked_list->head;
+    if (index == 0)
+    {
+        doubly_linked_list->head = current->next;
+        current->next = NULL;
+        doubly_linked_list->head->prev = NULL;
+        free(current);
+        doubly_linked_list->size--;
+        return;
+    }
+
     Node *prev = NULL;
 
     for (int i = 0; i < index; i++)
@@ -174,9 +225,20 @@ void DeleteFromIndex(DoublyLinkedList *doubly_linked_list, int index)
         current = current->next;
     }
 
+    if (index == doubly_linked_list->size - 1)
+    {
+        doubly_linked_list->tail = current->prev;
+        doubly_linked_list->tail->next = NULL;
+        current->prev = NULL;
+        free(current);
+        doubly_linked_list->size--;
+        return;
+    }
+
     Node *next_node = current->next;
     prev->next = next_node;
     next_node->prev = prev;
+    doubly_linked_list->size--;
     free(current);
 }
 
@@ -219,6 +281,7 @@ void Reverse(DoublyLinkedList *doubly_linked_list)
         current = next;
     }
 
+    doubly_linked_list->tail = doubly_linked_list->head;
     doubly_linked_list->head = prev;
     free(current);
 }
@@ -287,6 +350,18 @@ int main()
     }
 
     Reverse(doubly_linked_list);
+    PrintElements(doubly_linked_list);
+
+    DeleteValue(doubly_linked_list, 5);
+    PrintElements(doubly_linked_list);
+
+    DeleteValue(doubly_linked_list, 4);
+    PrintElements(doubly_linked_list);
+
+    DeleteFromIndex(doubly_linked_list, 1);
+    PrintElements(doubly_linked_list);
+
+    DeleteFromIndex(doubly_linked_list, 0);
     PrintElements(doubly_linked_list);
 
     Destroy(doubly_linked_list);
