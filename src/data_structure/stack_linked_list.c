@@ -31,7 +31,6 @@ Node *NewNode(int data)
  */
 typedef struct
 {
-    size_t capacity;
     size_t size;
     Node *head;
     Node *tail;
@@ -41,10 +40,9 @@ typedef struct
  * Creates a new Stack with given
  * capacity and returns a pointer to it.
  */
-Stack *NewStack(size_t capacity)
+Stack *NewStack()
 {
     Stack *stack = (Stack *)malloc(sizeof(Stack));
-    stack->capacity = capacity;
     stack->size = 0;
     stack->head = NULL;
     stack->tail = NULL;
@@ -58,12 +56,6 @@ Stack *NewStack(size_t capacity)
  */
 void Push(Stack *stack, int value)
 {
-    if (stack->size == stack->capacity)
-    {
-        puts("Stack is Full");
-        return;
-    }
-
     Node *new_node = NewNode(value);
     if (stack->head == NULL)
     {
@@ -161,7 +153,7 @@ void Destroy(Stack *stack)
 
 int main()
 {
-    Stack *stack = NewStack(5);
+    Stack *stack = NewStack();
 
     Push(stack, 1);
     Push(stack, 2);
