@@ -8,15 +8,15 @@ typedef struct
 {
     int **matrix;
     size_t size;
-} UnirectedGraph;
+} DirectedGraph;
 
 /*
  * Creates a DirectedGraph and returns
  * a pointer to it.
  */
-UnirectedGraph *NewDirectedGraph(size_t size)
+DirectedGraph *NewDirectedGraph(size_t size)
 {
-    UnirectedGraph *directed_graph = (UnirectedGraph *)malloc(sizeof(UnirectedGraph));
+    DirectedGraph *directed_graph = (DirectedGraph *)malloc(sizeof(DirectedGraph));
     directed_graph->size = size;
 
     directed_graph->matrix = malloc(directed_graph->size * sizeof(int *));
@@ -39,7 +39,7 @@ UnirectedGraph *NewDirectedGraph(size_t size)
 /*
  * Adds the edge between the source and destination
  */
-void AddEdge(UnirectedGraph *directed_graph, int src, int dest)
+void AddEdge(DirectedGraph *directed_graph, int src, int dest)
 {
     directed_graph->matrix[src][dest] = 1;
 };
@@ -47,7 +47,7 @@ void AddEdge(UnirectedGraph *directed_graph, int src, int dest)
 /*
  * Removes the edge between the srouce and destination
  */
-void RemoveEdge(UnirectedGraph *directed_graph, int src, int dest)
+void RemoveEdge(DirectedGraph *directed_graph, int src, int dest)
 {
     directed_graph->matrix[src][dest] = 0;
 }
@@ -55,7 +55,7 @@ void RemoveEdge(UnirectedGraph *directed_graph, int src, int dest)
 /*
  * Checks is there is an edge between source and destination
  */
-int HasEdge(UnirectedGraph *directed_graph, int src, int dest)
+int HasEdge(DirectedGraph *directed_graph, int src, int dest)
 {
     return directed_graph->matrix[src][dest] == 1;
 }
@@ -63,7 +63,7 @@ int HasEdge(UnirectedGraph *directed_graph, int src, int dest)
 /*
  * Prints the directed_graph
  */
-void Print(UnirectedGraph *directed_graph)
+void Print(DirectedGraph *directed_graph)
 {
     for (int i = 0; i < directed_graph->size; i++)
     {
@@ -78,7 +78,7 @@ void Print(UnirectedGraph *directed_graph)
 
 int main()
 {
-    UnirectedGraph *directed_graph = NewDirectedGraph(5);
+    DirectedGraph *directed_graph = NewDirectedGraph(5);
     Print(directed_graph);
 
     AddEdge(directed_graph, 0, 1);
