@@ -25,7 +25,7 @@ Node *NewNode(int value)
 }
 
 /*
- * HashMap implementation using Seperate Chaining
+ * HashMap implementation using Separate Chaining
  * for collision resolution.
  */
 typedef struct
