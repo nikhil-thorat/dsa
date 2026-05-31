@@ -14,7 +14,7 @@ typedef struct
  * Creates a WeightedUndirectedGraph and returns
  * a pointer to it.
  */
-WeightedUndirectedGraph *NewDirectedGraph(size_t size)
+WeightedUndirectedGraph *NewWeightedUndirectedGraph(size_t size)
 {
     WeightedUndirectedGraph *weighted_undirected_graph =
         (WeightedUndirectedGraph *)malloc(sizeof(WeightedUndirectedGraph));
@@ -81,7 +81,7 @@ void Print(WeightedUndirectedGraph *weighted_undirected_graph)
 
 int main()
 {
-    WeightedUndirectedGraph *weighted_undirected_graph = NewDirectedGraph(5);
+    WeightedUndirectedGraph *weighted_undirected_graph = NewWeightedUndirectedGraph(5);
     Print(weighted_undirected_graph);
 
     AddEdge(weighted_undirected_graph, 0, 1, 10);

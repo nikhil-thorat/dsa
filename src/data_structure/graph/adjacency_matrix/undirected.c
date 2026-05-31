@@ -14,7 +14,7 @@ typedef struct
  * Creates a UndirectedGraph and returns
  * a pointer to it.
  */
-UndirectedGraph *NewDirectedGraph(size_t size)
+UndirectedGraph *NewUndirectedGraph(size_t size)
 {
     UndirectedGraph *undirected_graph = (UndirectedGraph *)malloc(sizeof(UndirectedGraph));
     undirected_graph->size = size;
@@ -80,7 +80,7 @@ void Print(UndirectedGraph *undirected_graph)
 
 int main()
 {
-    UndirectedGraph *undirected_graph = NewDirectedGraph(5);
+    UndirectedGraph *undirected_graph = NewUndirectedGraph(5);
     Print(undirected_graph);
 
     AddEdge(undirected_graph, 0, 1);
