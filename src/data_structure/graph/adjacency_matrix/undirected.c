@@ -8,15 +8,15 @@ typedef struct
 {
     int **matrix;
     size_t size;
-} WeightedUndirectedGraph;
+} UndirectedGraph;
 
 /*
  * Creates a UndirectedGraph and returns
  * a pointer to it.
  */
-WeightedUndirectedGraph *NewDirectedGraph(size_t size)
+UndirectedGraph *NewDirectedGraph(size_t size)
 {
-    WeightedUndirectedGraph *undirected_graph = (WeightedUndirectedGraph *)malloc(sizeof(WeightedUndirectedGraph));
+    UndirectedGraph *undirected_graph = (UndirectedGraph *)malloc(sizeof(UndirectedGraph));
     undirected_graph->size = size;
 
     undirected_graph->matrix = malloc(undirected_graph->size * sizeof(int *));
@@ -39,7 +39,7 @@ WeightedUndirectedGraph *NewDirectedGraph(size_t size)
 /*
  * Adds the edge between the source and destination
  */
-void AddEdge(WeightedUndirectedGraph *undirected_graph, int src, int dest)
+void AddEdge(UndirectedGraph *undirected_graph, int src, int dest)
 {
     undirected_graph->matrix[src][dest] = 1;
     undirected_graph->matrix[dest][src] = 1;
@@ -48,7 +48,7 @@ void AddEdge(WeightedUndirectedGraph *undirected_graph, int src, int dest)
 /*
  * Removes the edge between the srouce and destination
  */
-void RemoveEdge(WeightedUndirectedGraph *undirected_graph, int src, int dest)
+void RemoveEdge(UndirectedGraph *undirected_graph, int src, int dest)
 {
     undirected_graph->matrix[src][dest] = 0;
     undirected_graph->matrix[dest][src] = 0;
@@ -57,7 +57,7 @@ void RemoveEdge(WeightedUndirectedGraph *undirected_graph, int src, int dest)
 /*
  * Checks is there is an edge between source and destination
  */
-int HasEdge(WeightedUndirectedGraph *undirected_graph, int src, int dest)
+int HasEdge(UndirectedGraph *undirected_graph, int src, int dest)
 {
     return undirected_graph->matrix[src][dest] == 1;
 }
@@ -65,7 +65,7 @@ int HasEdge(WeightedUndirectedGraph *undirected_graph, int src, int dest)
 /*
  * Prints the directed_graph
  */
-void Print(WeightedUndirectedGraph *undirected_graph)
+void Print(UndirectedGraph *undirected_graph)
 {
     for (int i = 0; i < undirected_graph->size; i++)
     {
@@ -80,7 +80,7 @@ void Print(WeightedUndirectedGraph *undirected_graph)
 
 int main()
 {
-    WeightedUndirectedGraph *undirected_graph = NewDirectedGraph(5);
+    UndirectedGraph *undirected_graph = NewDirectedGraph(5);
     Print(undirected_graph);
 
     AddEdge(undirected_graph, 0, 1);
