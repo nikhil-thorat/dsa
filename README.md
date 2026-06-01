@@ -65,3 +65,35 @@
 | **1D Tabulation** | Build an iterative Fibonacci sequence using an array. | House Robber |
 | **2D DP / Grid** | Find the number of paths from top-left to bottom-right in an empty grid. | Unique Paths |
 | **Knapsack Variations** | Determine if you can make exact change with given coins. | Coin Change |
+
+# Solving Problems 101
+
+1. Simplify the Problem
+Most of the questions have lot of unnecessary information, make sure that you understand what truly matters.
+Every question has input that you have to transform into the desired outputs, make sure to manually walkthrough an example to understand the crux of the problem before jumping to finding a solution.
+
+These points should be clarified.
+- "The inputs are X"
+- "We perform Z operation on X"
+- "We get Y as output"
+
+*Make sure you ask clarifying questions to remove any ambiguity. Also make sure that you think about edge cases.*
+
+2. Pattern Recognition
+Most of the problems revolve around some problem solving pattern, to recognize what pattern to use you should be familir with data structures and algorithms and Big O notations particularly as they help you in pattern recognition.
+
+*Start out by explaining/thinking the straight forward solution (brute force solution), even if it is not efficient. Just identify the Time and Space complexities, this way you find the gaps for optimizing the solution and then moving towards finding the optimal solution.*
+
+**Always look at constraints, they act as a hint**
+
+3. Implementation
+Implement your solution. Through enough practice you will start recognizing patterns quickly.
+
+*Before implementing a solution, make sure that you have thought about every possible edge case and a optimal solution for the given problem.*
+
+Make sure before you submit the solution, you have not made any syntactical and logical errors for this you can dry run the example that you had walkthrough before and see if it works as intended.
+
+4. Debug
+If your solution fails straight away, then either you have made mistake in your implementation or your solution is wrong for the given problem. Identify the failed test cases, and check if they are edge cases or not. Rethink about the solution and implement it again.
+
+
