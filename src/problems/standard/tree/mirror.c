@@ -167,6 +167,16 @@ void Swap(Node *root)
     Node *right = root->right_node;
     Node *left = root->left_node;
 
+    if (right)
+    {
+        Swap(right);
+    }
+
+    if (left)
+    {
+        Swap(left);
+    }
+
     root->left_node = right;
     root->right_node = left;
 }
@@ -203,14 +213,6 @@ void Swap(Node *root)
  */
 void Mirrored(BST *bst)
 {
-    if (bst->root->right_node)
-    {
-        Swap(bst->root->right_node);
-    }
-    if (bst->root->left_node)
-    {
-        Swap(bst->root->left_node);
-    }
     Swap(bst->root);
 }
 
@@ -224,6 +226,14 @@ int main()
     Insert(bst, 3);
     Insert(bst, 5);
     Insert(bst, 7);
+    PrintElements(bst, PreorderTraversal);
+
+    Mirrored(bst);
+    PrintElements(bst, PreorderTraversal);
+    Mirrored(bst);
+
+    Insert(bst, 0);
+    Insert(bst, 10);
     PrintElements(bst, PreorderTraversal);
 
     Mirrored(bst);
