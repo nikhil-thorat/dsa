@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-#include <cctype>
 
 void solve()
 {
@@ -10,17 +9,25 @@ void solve()
 
     bool valid = true;
 
-    /* TODO There is a bug in this logic fix it. */
-
     while (start <= end)
     {
-        if (std::isalnum(str[start]) && std::isalnum(str[end]))
+        if (!std::isalnum(static_cast<unsigned char>(str[start])))
         {
-            if (std::tolower(str[start]) != std::tolower(str[end]))
-            {
-                valid = false;
-                break;
-            }
+            start++;
+            continue;
+            ;
+        }
+
+        if (!std::isalnum(static_cast<unsigned char>(str[end])))
+        {
+            end--;
+            continue;
+        }
+
+        if (std::tolower(str[start]) != std::tolower(str[end]))
+        {
+            valid = false;
+            break;
         }
 
         start++;
