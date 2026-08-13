@@ -3,6 +3,39 @@
 
 void solve()
 {
+    /*
+     * PROBLEM STATEMENT
+     * Given two strings s and t, return true
+     * if two strings are anagram of each other,
+     * otherwise return false.
+     * An anagram is a string that contains exact
+     * same characters as another string, but the
+     * order of characters can be different.
+     *
+     * EXAMPLE
+     * Input : s = "racecar", t = "carrace"
+     * Output : true
+     *
+     * Input : s = "jim", t = "jar"
+     * Output : false
+     *
+     * BRUTE FORCE APPROACH
+     * Sort both the strings and compare if they
+     * are equal, if yes return true else return
+     * false. Time complexity becomes O(N Log N)
+     * for sorting the strings. Space complexity
+     * is O(1).
+     *
+     * OPTIMIZED APPROACH
+     * Use a maps for storing characther count in
+     * each string. Compare if two maps are equal
+     * if yes return true, else return false.
+     * Time complexity becomes O(N + M) where
+     * N is the size of s and M is the size of t.
+     * Space complexity is O(N + M) for the two
+     * maps.
+     */
+
     std::string s;
     std::string t;
 
