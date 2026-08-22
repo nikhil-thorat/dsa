@@ -3,6 +3,33 @@
 
 void solve()
 {
+    /*
+     * PROBLEM STATEMENT
+     * You are given an integer array prices, where
+     * prices[i] is the price of stock on ith day.
+     * You may choose a single day to buy one stock,
+     * and choose different day in future to sell it.
+     * Return the maximum profit you can achieve. You
+     * may choose to not make any transactions, in which
+     * case profit would be 0.
+     *
+     * EXAMPLE
+     * Input : prices = {10, 1, 5, 6, 7, 1}
+     * Output : 6
+     *
+     * BRUTE FORCES APPROACH
+     * Compute profit of every transaction that can be made
+     * based on the conditions given and get the maximum
+     * profit from that. Time complexity becomes O(N^2).
+     * Space complexity becomes O(1).
+     *
+     * OPTIMIZED APPROACH
+     * Use sliding window approach, keep track of minimum
+     * price and iterate over array to find the maximum
+     * profit that can be made. Time complexity becomes
+     * O(N). Space complexity becomes O(1).
+     */
+
     int length;
     std::cin >> length;
 

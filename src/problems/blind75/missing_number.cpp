@@ -3,6 +3,28 @@
 
 void solve()
 {
+    /*
+     * PROBLEM STATEMENT
+     * Given an array nums containing n
+     * integers in the range [0, n] without
+     * any duplicates, return the single
+     * number in the range that is missing
+     * from the nums.
+     *
+     * EXAMPLE
+     * Input : nums = {1, 2, 3}
+     * Output : 0
+     *
+     * Input : nums = {0, 2}
+     * Output : 1
+     *
+     * APPROACH
+     * Using sum of natural numbers formula
+     * calculate the sum from 0-n, then
+     * calculate the sum of nums array.
+     * And return the difference.
+     */
+
     int length;
     std::cin >> length;
 

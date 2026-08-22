@@ -2,6 +2,37 @@
 
 void solve()
 {
+    /*
+     * PROBLEM STATEMENT
+     * You are given a string s consisting
+     * of the following characters '(', '[',
+     * '{', ')', ']' and '}'.
+     * The input string s is valid if and only
+     * if.
+     * - Every open bracket is closed by the same
+     *   type of closed bracket.
+     * - Open brackets are closed in the correct
+     *   order.
+     * - Every close bracket has a corresponding
+     *   open bracket of the same types.
+     *
+     * EXAMPLE
+     * Input : s = "[]"
+     * Output : true
+     *
+     * Input : s = "[(])"
+     * Output : false
+     *
+     * APPROACH
+     * Use a stack to keep track of opening
+     * brackets. Whenever we see a closing
+     * bracket compare it with top of stack
+     * and pop it if they are of same type
+     * and continue, else string s is invalid.
+     * Time complexity becomes O(N). Space
+     * Complexity becomes O(N).
+     */
+
     std::string str;
     std::cin >> str;
 

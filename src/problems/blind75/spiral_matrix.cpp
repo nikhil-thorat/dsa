@@ -3,6 +3,28 @@
 
 void solve()
 {
+    /*
+     * PROBLEM STATEMENT
+     * Given an m x n matrix of integers
+     * matrix. Return a list of all elements
+     * within the matrix in spiral order.
+     *
+     * EXAMPLE
+     * Input : matrix = {{1,2}, {3,4}}
+     * Output : {1,2,3,4}
+     *
+     * Input : matrix = {{1,2,3}, {4,5,6}, {7,8,9}}
+     * Output : {1,2,3,4,5,6,7,8,9}
+     *
+     * APPROACH
+     * Use top, left, bottom, right guides to
+     * dictate what we iterate over and print
+     * it in order left -> right, top -> bottom,
+     * right -> left and bottom -> top. After
+     * each iteration update these to shrink
+     * the iterating area.
+     */
+
     int n;
     int m;
     std::cin >> n >> m;

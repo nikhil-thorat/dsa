@@ -3,6 +3,30 @@
 
 void solve()
 {
+    /*
+     * PROBLEM STATEMENT
+     * Given a square n x n matrix of integers
+     * matrix, rotate it by 90 degrees clockwise.
+     * You must rotate the matrix in-place. Do
+     * not allocate another 2D matrix and do the
+     * rotation.
+     *
+     * EXAMPLE
+     * Input : matrix = {
+     *      {1, 2},
+     *      {3, 4},
+     * }
+     * Output : {
+     *      {3, 1},
+     *      {4, 2},
+     * }
+     *
+     * APPROACH
+     * Reverse the rows of the matrix, then
+     * transpose the matrix. Resulting in
+     * 90 deg rotation of the matrix.
+     */
+
     int n;
     std::cin >> n;
 

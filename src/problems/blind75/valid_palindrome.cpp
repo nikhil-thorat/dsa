@@ -2,6 +2,27 @@
 
 void solve()
 {
+    /*
+     * PROBLEM STATEMENT
+     * Given a string s, return true if it
+     * is a palindrome, otherwise return false.
+     * A palindrome is string that reads the same
+     * forward and backward. It is also case-insensitive
+     * and ignores all non-alphanumeric characters.
+     * NOTE - Alphanumeric includes (A-Z,a-z,0-9)
+     *
+     * EXAMPLE
+     * Input : s = "Was it a car or a cat I saw?"
+     * Output : true
+     *
+     * APPROACH
+     * Use two pointers start and end, where
+     * start starts from 0 and end starts from
+     * length - 1. Compare char at start and end
+     * and increment/decrement if they are equal
+     * if not return false.
+     */
+
     std::string str = "No lemon, no melon";
 
     int start = 0;
@@ -15,7 +36,6 @@ void solve()
         {
             start++;
             continue;
-            ;
         }
 
         if (!std::isalnum(static_cast<unsigned char>(str[end])))
